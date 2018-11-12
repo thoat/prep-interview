@@ -144,6 +144,8 @@ dmypy.json
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
+# have to add the individual file below because preceeding it with the folder name "./idea" does seem working
+workspace.xml
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
