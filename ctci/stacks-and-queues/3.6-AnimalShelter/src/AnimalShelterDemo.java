@@ -1,13 +1,13 @@
 public class AnimalShelterDemo {
 
-    private static final Animal DOG1 = new Animal("dog", 1);
-    private static final Animal CAT2 = new Animal("cat", 2);
-    private static final Animal CAT3 = new Animal("cat", 3);
-    private static final Animal DOG4 = new Animal("dog", 4);
-    private static final Animal CAT5 = new Animal("cat", 5);
-    private static final Animal CAT6 = new Animal("cat", 6);
-    private static final Animal CAT7 = new Animal("cat", 7);
-    private static final Animal DOG8 = new Animal("dog", 8);
+    private static final Animal DOG1 = new Dog();
+    private static final Animal CAT3 = new Cat();
+    private static final Animal DOG4 = new Dog();
+    private static final Animal CAT2 = new Cat();
+    private static final Animal CAT5 = new Cat();
+    private static final Animal CAT6 = new Cat();
+    private static final Animal CAT7 = new Cat();
+    private static final Animal DOG8 = new Dog();
 
     public static void main(String[] args) {
         AnimalShelter myShelter = new AnimalShelter();

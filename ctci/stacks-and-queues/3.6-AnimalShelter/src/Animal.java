@@ -1,18 +1,15 @@
 import java.time.LocalDateTime;
 
-class Animal {
-    private String type;
+abstract class Animal {
     private int id;
     private LocalDateTime arrivalTime;
 
-    public Animal(String type, int id) {
-        this.type = type;
-        this.id = id;
+    public Animal() {
         arrivalTime = LocalDateTime.now();
     }
 
-    public String getType() {
-        return this.type;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public LocalDateTime getArrivalTime() {
@@ -21,7 +18,8 @@ class Animal {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.type);
+        String type = (this instanceof Dog) ? "dog" : (this instanceof Cat) ? "cat" : "";
+        sb.append(type);
         sb.append(" no. ");
         sb.append(this.id);
         sb.append(" came at ");
@@ -30,3 +28,4 @@ class Animal {
         return sb.toString();
     }
 }
+

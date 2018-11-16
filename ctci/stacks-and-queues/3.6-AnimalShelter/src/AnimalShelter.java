@@ -1,4 +1,3 @@
-import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -6,25 +5,26 @@ public class AnimalShelter {
 
     private Queue<Animal> dogs = new LinkedList<>();
     private Queue<Animal> cats = new LinkedList<>();
+    private int order = 0;
 
     public void enqueue(Animal a) {
-        switch (a.getType()) {
-            case "dog":
-                dogs.add(a);
-                break;
-            case "cat":
-                cats.add(a);
-                break;
-        }
+        if (a instanceof Dog) dogs.add(a);
+        else if (a instanceof Cat) cats.add(a);
+        a.setId(order);
+        order++;
     }
 
     public Animal dequeueAny() {
-        if (dogs.isEmpty() && cats.isEmpty()) return null;
-        if (dogs.isEmpty()) return cats.poll();
-        if (cats.isEmpty()) return dogs.poll();
-        if (dogs.peek().getArrivalTime().isBefore(cats.peek().getArrivalTime()))
-            return dogs.poll();
-        else return cats.poll();
+//        if (dogs.isEmpty() && cats.isEmpty()) return null;
+//        DON'T USE THIS bcz the 2 lines below will throw NullPointerException for us already
+//        To be exact, the Java docs say Queue.poll() and LL.poll() will return null if the list is empty
+//        But when I ran the code, a NullPointerException is thrown.
+//        Anyhow, for consistency, let the built-in methods do this themselves.
+        if (dogs.isEmpty()) return dequeueCat();
+        if (cats.isEmpty()) return dequeueDog();
+        if (dogs.peek().getArrivalTime().isBefore(cats.peek().getArrivalTime())) // can also make use of "id"
+            return dequeueDog();
+        else return dequeueCat();
     }
 
     public Animal dequeueDog() {
